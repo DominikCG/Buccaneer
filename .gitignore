@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/unity,visualstudio
-# Edit at https://www.toptal.com/developers/gitignore?templates=unity,visualstudio
+# Created by https://www.toptal.com/developers/gitignore/api/unity,visualstudio,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=unity,visualstudio,visualstudiocode
 
 ### Unity ###
 # This .gitignore file should be placed at the root of your Unity project directory
@@ -70,6 +70,18 @@ crashlytics-build.properties
 InitTestScene*.unity.meta
 InitTestScene*.unity
 
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -417,4 +429,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# End of https://www.toptal.com/developers/gitignore/api/unity,visualstudio
+# End of https://www.toptal.com/developers/gitignore/api/unity,visualstudio,visualstudiocode
