@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5221960952189526060}
   - component: {fileID: 5484758670663355316}
   - component: {fileID: 1899893111488000799}
+  - component: {fileID: 7848034961206694121}
   m_Layer: 0
   m_Name: cannonBall
   m_TagString: Bullet
@@ -130,3 +131,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
+--- !u!114 &7848034961206694121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3933758852914992607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0873523ea61c31b4798175ee4cb4bf59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion_effect: {fileID: 2188399394576223466, guid: 9020920f70919fb4fa7b5c9e72f534fc,
+    type: 3}
