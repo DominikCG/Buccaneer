@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Player_movement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D player_rg = null;
-    [SerializeField] private float movement_speed = 0f;
-    [SerializeField] private float rotation_speed = 0f;
-    [SerializeField] private float axis_y;
-    [SerializeField] private float axis_x;
+    [SerializeField] private Rigidbody2D player_rg = default;
+    [SerializeField] private float movement_speed = default;
+    [SerializeField] private float rotation_speed = default;
+    [SerializeField] private float axis_y = default;
+    [SerializeField] private float axis_x = default;
 
 
 
@@ -16,15 +16,15 @@ public class Player_movement : MonoBehaviour
     void Update()
     {
         axis_y = Input.GetAxis("Vertical");
-        float axis_x = Input.GetAxis("Horizontal");
+        axis_x = Input.GetAxis("Horizontal");
         
 
-        MoveShipForward(axis_y * movement_speed);
-        RotateShip(transform, axis_x * -rotation_speed);
+        Move_Ship_Forward(axis_y * movement_speed);
+        Rotate_Ship(transform, axis_x * -rotation_speed);
       
     }
 
-    private void MoveShipForward(float acceleration)
+    private void Move_Ship_Forward(float acceleration)
     {
         if(acceleration > 0){
 
@@ -32,7 +32,7 @@ public class Player_movement : MonoBehaviour
         player_rg.AddForce(move);
         }
     }
-    private void RotateShip(Transform t, float rotationSpeed)
+    private void Rotate_Ship(Transform t, float rotationSpeed)
     {
         t.Rotate(0, 0, rotationSpeed);
     }
