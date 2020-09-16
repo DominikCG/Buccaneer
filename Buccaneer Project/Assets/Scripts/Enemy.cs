@@ -30,20 +30,10 @@ public class Enemy : MonoBehaviour
         health_aux = max_health / 4;
         Set_Sprite();
     }
-
   
 
     // Update is called once per frame
-    void Update()
-    {
-        
-        if(current_health <= 0)
-        {
-            Death();
-        }
 
-
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -87,16 +77,16 @@ public class Enemy : MonoBehaviour
 
     private void Set_Sprite()
     {
-        if (current_health > health_aux*3)
+        if (current_health > health_aux * 3)
             gameObject.GetComponent<SpriteRenderer>().sprite = ship_sprite[0];
 
-        if (current_health > health_aux * 2 && current_health < health_aux * 3)
+        if (current_health < health_aux * 3 )
             gameObject.GetComponent<SpriteRenderer>().sprite = ship_sprite[1];
 
-        if (current_health > health_aux && current_health < health_aux * 2)
+        if (current_health < health_aux * 2 )
             gameObject.GetComponent<SpriteRenderer>().sprite = ship_sprite[2];
 
-        if (current_health <= 0 && enemy.CompareTag("Enemy_shooter"))
-            gameObject.GetComponent<SpriteRenderer>().sprite = ship_sprite[3];
+        if (current_health <= 0 )
+            Death();
     }
 }

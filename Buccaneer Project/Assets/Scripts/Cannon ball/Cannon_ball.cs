@@ -26,6 +26,11 @@ public class Cannon_ball : MonoBehaviour
             hit_obj.gameObject.GetComponent<Enemy>().Take_Damage(damage);
             Explosion();
         }
+        else if (hit_obj.CompareTag("Player"))
+        {
+            hit_obj.gameObject.GetComponent<Player_health>().Take_Damage(damage);
+            Explosion();
+        }
         else
         {
             Explosion();

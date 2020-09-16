@@ -28,7 +28,10 @@ public class Player_shoot : MonoBehaviour
     private float timer_cannon_l = 0f;
     private float timer_cannon_r = 0f;
 
-
+    private void Start()
+    {
+        cam = Camera.main;
+    }
 
     // Update is called once per frame
     void Update()

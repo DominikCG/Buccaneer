@@ -14,8 +14,8 @@ public class Enemy_AI : MonoBehaviour
     [SerializeField] private Transform[] enemy_left_cannons = default;
     [SerializeField] private Transform enemy_front_cannon = default;
 
-
-
+    [SerializeField] private float distance = default;
+    [SerializeField] private float distance_to_shoot = default;
     [SerializeField] private float speed = default;
     [SerializeField] private float turn = default;
    
@@ -32,32 +32,41 @@ public class Enemy_AI : MonoBehaviour
     private float timer_cannon_l = default;
     private float timer_cannon_r = default;
 
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if (player != null)
+        {
+        distance = Vector3.Distance(player.transform.position, transform.position);
+
         Timer_Control();
         Chase_Player();
 
 
-        if (timer_cannon_f > 4 && angle_to_shoot < 20 && angle_to_shoot > -20 && gameObject.CompareTag("Enemy_shooter"))
+        if (timer_cannon_f > 4 && angle_to_shoot < 20 && angle_to_shoot > -20 && gameObject.CompareTag("Enemy_shooter") && distance < distance_to_shoot)
         {
             Shoot_Front();
             timer_cannon_f = 0f;
         }
 
-        if (timer_cannon_r > 4 && angle_to_shoot < -70 && angle_to_shoot > -110 && gameObject.CompareTag("Enemy_shooter"))
+        if (timer_cannon_r > 4 && angle_to_shoot < -70 && angle_to_shoot > -110 && gameObject.CompareTag("Enemy_shooter") && distance < distance_to_shoot)
         {
             Shoot_Right();
             timer_cannon_r = 0f;
         }
 
-        if (timer_cannon_l > 4 && angle_to_shoot < 110 && angle_to_shoot > 70 && gameObject.CompareTag("Enemy_shooter"))
+        if (timer_cannon_l > 4 && angle_to_shoot < 110 && angle_to_shoot > 70 && gameObject.CompareTag("Enemy_shooter") && distance < distance_to_shoot)
         {
             Shoot_Left();
             timer_cannon_l = 0f;
         }
 
+        }
     }
 
     private void Chase_Player()
@@ -82,10 +91,17 @@ public class Enemy_AI : MonoBehaviour
 
         if (angle_to_shoot > 180)
             angle_to_shoot = -360 + angle_to_shoot;
-        Debug.Log(angle_to_shoot);
 
-        Vector2 move = transform.up * speed * Time.fixedDeltaTime;
-        enemy_rg.AddForce(move);
+        if (gameObject.CompareTag("Enemy_shooter") && distance > distance_to_shoot - 0.5f)
+        {  
+            Vector2 move = transform.up * speed * Time.fixedDeltaTime;
+            enemy_rg.AddForce(move);
+        }
+        else
+        {
+            Vector2 move = transform.up * speed * Time.fixedDeltaTime;
+            enemy_rg.AddForce(move);
+        }
     }
 
     private void Timer_Control()
