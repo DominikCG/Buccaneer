@@ -269,9 +269,9 @@ MonoBehaviour:
   - {fileID: 6843309367667610851}
   enemy_front_cannon: {fileID: 6843309366817444726}
   distance: 0
-  distance_to_shoot: 4
+  maximum_distance: 4
+  distance_to_shoot: 5
   speed: 55
-  turn: 2
   ball_speed: 7
   damage: 5
   player_position: {x: 0, y: 0}

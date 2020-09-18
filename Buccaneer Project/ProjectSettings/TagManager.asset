@@ -8,6 +8,9 @@ TagManager:
   - Enemy_shooter
   - Enemy_chaser
   - Camera_player
+  - Spawn_slider_time
+  - Game_slider_time
+  - UI
   layers:
   - Default
   - TransparentFX
