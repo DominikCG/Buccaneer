@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Slide_to_text : MonoBehaviour
 {
-    public Slider slider;
+    [SerializeField] private Slider slider = default;
     private Text value;
 
     void Start()

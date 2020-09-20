@@ -6,10 +6,14 @@ ScriptsOnlyBuild:
     - Cannon_ball
     - Enemy
     - Enemy_AI
+    - Game_Configurations
+    - Game_UI
     - Health_bar
+    - Main_Menu
     - Player_health
     - Player_movement
     - Player_shoot
+    - Slide_to_text
     - Spawner_control
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
@@ -38,14 +42,16 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.Slider
+    - UnityEngine.UI.Text
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkCallbacks
   sceneClasses:
-    Assets/Scenes/Test.unity:
+    Assets/Scenes/Arena.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -72,43 +78,53 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
+    - Class: 96
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 638}
     - Class: 114
+      Script: {instanceID: 11280}
+    - Class: 114
       Script: {instanceID: 11282}
     - Class: 114
       Script: {instanceID: 11306}
     - Class: 114
-      Script: {instanceID: 11722}
+      Script: {instanceID: 11444}
     - Class: 114
-      Script: {instanceID: 11866}
+      Script: {instanceID: 11726}
     - Class: 114
-      Script: {instanceID: 11888}
+      Script: {instanceID: 11870}
     - Class: 114
-      Script: {instanceID: 12538}
+      Script: {instanceID: 11892}
     - Class: 114
-      Script: {instanceID: 12842}
+      Script: {instanceID: 12542}
     - Class: 114
-      Script: {instanceID: 13618}
+      Script: {instanceID: 12848}
     - Class: 114
-      Script: {instanceID: 13878}
+      Script: {instanceID: 13362}
     - Class: 114
-      Script: {instanceID: 13948}
+      Script: {instanceID: 13450}
     - Class: 114
-      Script: {instanceID: 14342}
+      Script: {instanceID: 13626}
     - Class: 114
-      Script: {instanceID: 14368}
+      Script: {instanceID: 13886}
     - Class: 114
-      Script: {instanceID: 14490}
+      Script: {instanceID: 13956}
     - Class: 114
-      Script: {instanceID: 14816}
+      Script: {instanceID: 14350}
     - Class: 114
-      Script: {instanceID: 15082}
+      Script: {instanceID: 14376}
     - Class: 114
-      Script: {instanceID: 30712}
+      Script: {instanceID: 14498}
+    - Class: 114
+      Script: {instanceID: 14826}
+    - Class: 114
+      Script: {instanceID: 15092}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -131,6 +147,61 @@ ScriptsOnlyBuild:
     - Class: 483693784
       Script: {instanceID: 0}
     - Class: 1839735485
+      Script: {instanceID: 0}
+    Assets/Scenes/Main_menu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11280}
+    - Class: 114
+      Script: {instanceID: 11282}
+    - Class: 114
+      Script: {instanceID: 11306}
+    - Class: 114
+      Script: {instanceID: 11716}
+    - Class: 114
+      Script: {instanceID: 11726}
+    - Class: 114
+      Script: {instanceID: 12542}
+    - Class: 114
+      Script: {instanceID: 12658}
+    - Class: 114
+      Script: {instanceID: 13450}
+    - Class: 114
+      Script: {instanceID: 14350}
+    - Class: 114
+      Script: {instanceID: 14552}
+    - Class: 114
+      Script: {instanceID: 15092}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -175,6 +246,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.Advertisements.dll
     namespaceName: UnityEngine.Advertisements.Platform.Editor
     className: BannerPlaceholder
+  - hash:
+      serializedVersion: 2
+      Hash: 0d14720557bbce3fc3c6cc0a36d6803c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Spawner_control
   - hash:
       serializedVersion: 2
       Hash: 5bd9a19c7b5f76c563418e28f48a561b
@@ -243,6 +320,12 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
+      Hash: 7fc9b156855d06566f047e21910bfecf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Game_Configurations
+  - hash:
+      serializedVersion: 2
       Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -285,7 +368,7 @@ ScriptsOnlyBuild:
     className: Player_movement
   - hash:
       serializedVersion: 2
-      Hash: 07315061614d0d03091c27d1069410c1
+      Hash: 7fafba1451b19ff5b237e56f6389728d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemy
@@ -453,6 +536,12 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: 1028c39545bcfa841aaab54121e69a47
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Slide_to_text
+  - hash:
+      serializedVersion: 2
       Hash: 265cf27ba050d55ff33a8acab4ded6c0
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
@@ -517,6 +606,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
+  - hash:
+      serializedVersion: 2
+      Hash: 1dfa3a1e043b7a74a09ffa43da765f85
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Game_UI
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -615,7 +710,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 42f256a2222ee51b489839a399a498cc
+      Hash: 7e8330cdaf9d9bdd1120d986e0e8c4ef
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemy_AI
@@ -627,7 +722,7 @@ ScriptsOnlyBuild:
     className: NetworkMigrationManager
   - hash:
       serializedVersion: 2
-      Hash: ec9403e31b69224b7bc145b5a8c41423
+      Hash: 21586961018ee11de08cc14080ad084c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player_health
@@ -693,10 +788,16 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 7c67639f7eaa5684ab9b62356e53bffe
+      Hash: 49cbc5396c2feedb98db19d7e4a3275c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player_shoot
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Main_Menu
   - hash:
       serializedVersion: 2
       Hash: 1dcb82730d983b77cec736c6ef19f814
@@ -729,7 +830,7 @@ ScriptsOnlyBuild:
     className: NetworkAnimator
   - hash:
       serializedVersion: 2
-      Hash: deb627a395a1f950e1d35bda65b35d2d
+      Hash: 0cd696488aedd0c99aa4bbcd34f0d8ee
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Cannon_ball
@@ -841,13 +942,8 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 00f42a475e2f8c52aa7b532527549c53
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Spawner_control
   platform: 5
   scenePathNames:
-  - Assets/Scenes/Test.unity
-  playerPath: C:/Users/DOMINIKCG/Desktop/Buccaneer_teste_alpha 0.1/Buccaneer Project.exe
+  - Assets/Scenes/Main_menu.unity
+  - Assets/Scenes/Arena.unity
+  playerPath: C:/Users/DOMINIKCG/Desktop/Buccaneer_teste_beta 0.2/Buccaneer Project.exe

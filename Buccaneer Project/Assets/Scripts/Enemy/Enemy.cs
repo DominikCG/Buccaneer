@@ -8,22 +8,21 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private GameObject explosion_effect = default;
     [SerializeField] private GameObject sunk_ship = default;
-
+    [SerializeField] private GameObject UI_aux = default;
     [SerializeField] private Sprite[] ship_sprite = default;
     [SerializeField] private int damage = default;
     [SerializeField] private int max_health = default;
-    private GameObject UI_aux = default;
-    public Health_bar health_Bar;
-
+    [SerializeField] private bool is_alive = default;
     private Transform enemy = default;
-
     private float health_aux = default;
     private int current_health = default;
 
+    public Health_bar health_Bar;
 
     // Start is called before the first frame update
     void Start()
     {
+        is_alive = true;
         UI_aux = GameObject.FindGameObjectWithTag("UI");
         enemy = gameObject.transform;
         current_health = max_health;
@@ -52,6 +51,9 @@ public class Enemy : MonoBehaviour
         GameObject enemy_tag = gameObject;
         if (enemy.CompareTag("Enemy_chaser"))
         {
+            if(!is_alive)
+                UI_aux.GetComponent<Game_UI>().Set_score();
+
             GameObject effect = Instantiate(explosion_effect, transform.position, Quaternion.identity);
             effect.transform.localScale = effect.transform.localScale * 2f;
             Destroy(effect, 0.5f);
@@ -60,6 +62,7 @@ public class Enemy : MonoBehaviour
 
         if (enemy.CompareTag("Enemy_shooter"))
         {
+            UI_aux.GetComponent<Game_UI>().Set_score();
             GameObject effect = Instantiate(explosion_effect, transform.position, Quaternion.identity);
             effect.transform.localScale = effect.transform.localScale * 2f;
             Instantiate(sunk_ship, transform.position, transform.rotation);
@@ -87,10 +90,11 @@ public class Enemy : MonoBehaviour
         if (current_health < health_aux * 2 )
             gameObject.GetComponent<SpriteRenderer>().sprite = ship_sprite[2];
 
-        if (current_health <= 0)
+        if (current_health <= 0 && is_alive)
         {
-            UI_aux.GetComponent<Game_UI>().Set_score();
+            is_alive = false;
             Death();
         }
+        
     }
 }

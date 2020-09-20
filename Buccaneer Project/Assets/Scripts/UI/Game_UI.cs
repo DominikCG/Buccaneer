@@ -7,22 +7,21 @@ using System;
 
 public class Game_UI : MonoBehaviour
 {
-
-   
+    [SerializeField] private GameObject end_game = default;
+    [SerializeField] private GameObject game_info = default;
     [SerializeField] private Text score_txt = default;
     [SerializeField] private Text timer_txt = default;
     [SerializeField] private Text end_game_txt = default;
     [SerializeField] private Text end_game_score_txt = default;
-    [SerializeField] private GameObject end_game = default;
-    [SerializeField] private GameObject game_info = default;
-    
-    private float timer = default;
     [SerializeField] private int score_value = default;
+    private float timer = default;
     private int score = default;
     private bool player_is_alive = default;
+    private bool pause_game = default;
 
     private void Start()
     {
+        pause_game = false;
         Time.timeScale = 1;
         timer = Game_Configurations.Config.Get_Game_Time();
         
@@ -31,6 +30,14 @@ public class Game_UI : MonoBehaviour
     private void Update()
     {
         Count_Down();
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pause_game = !pause_game;
+            Pause_Game();
+        }
+
 
         if(timer <= 0 && player_is_alive)
         {
@@ -57,6 +64,22 @@ public class Game_UI : MonoBehaviour
         game_info.SetActive(false);
         end_game_txt.text = "Victory!";
         end_game_score_txt.text = "Final Score: " + score;
+    }
+
+    private void Pause_Game()
+    {
+        if (pause_game)
+        {
+            end_game.SetActive(true);
+            game_info.SetActive(false);
+            end_game_txt.text = "Menu";
+        }
+        else
+        {
+            end_game.SetActive(false);
+            game_info.SetActive(true);
+            end_game_txt.text = " ";
+        }
     }
 
     private void Count_Down()

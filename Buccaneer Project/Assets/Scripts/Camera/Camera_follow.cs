@@ -6,8 +6,8 @@ public class Camera_follow : MonoBehaviour
 {
 
     [SerializeField] private Transform player_ship = default;
-    // Start is called before the first frame update
-    private void Start()
+
+    void Start()
     {
         GameObject player = GameObject.Find("Player");
         player_ship = player.GetComponent<Transform>();

@@ -7,15 +7,15 @@ public class Player_health : MonoBehaviour
 {
     [SerializeField] private GameObject explosion_effect = default;
     [SerializeField] private GameObject sunk_ship = default;
+    [SerializeField] private Sprite[] ship_sprite = default;
+    [SerializeField] private Health_bar health_Bar = default;
     [SerializeField] private int max_health = default;
     [SerializeField] private int current_health = default;
-    [SerializeField] private Sprite[] ship_sprite = default;
-
     private GameObject UI = default;
-
-    public Health_bar health_Bar = default;
-
     private bool is_alive = default;
+
+
+
     
     // Start is called before the first frame update
     void Start()

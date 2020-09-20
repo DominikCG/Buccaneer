@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    [SerializeField] private Camera cam;
+    [SerializeField] private Camera cam = default;
     [SerializeField] private Transform _transform = default;
 
     private void Start()
