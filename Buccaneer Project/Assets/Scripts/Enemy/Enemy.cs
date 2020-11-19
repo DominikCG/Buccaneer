@@ -6,6 +6,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
+    public delegate void DeathHandler();
+    public event DeathHandler OnDeah;
+
     [SerializeField] private GameObject explosion_effect = default;
     [SerializeField] private GameObject sunk_ship = default;
     [SerializeField] private GameObject UI_aux = default;
@@ -69,6 +72,8 @@ public class Enemy : MonoBehaviour
             Destroy(effect, 0.5f);
             Destroy(gameObject);
         }
+
+        OnDeah?.Invoke();
 
     }
 

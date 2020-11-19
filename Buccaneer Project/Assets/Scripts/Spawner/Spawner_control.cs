@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Spawner_control : MonoBehaviour
 {
-    [SerializeField] private Camera cam = default;
     [SerializeField] private GameObject[] enemy = default;
     [SerializeField] private LayerMask dont_spawn_layer = default;
-    [SerializeField] private Vector3 spawn_point = default;
-    [SerializeField] private float spawn_time = default;
-    [SerializeField] private float spawn_x = default;
-    [SerializeField] private float spawn_y = default;
-    [SerializeField] private float screen_h = default;
-    [SerializeField] private float screen_w = default;
     [SerializeField] private float check_radius = default;
-    [SerializeField] private bool cant_spawn = default;
+    
+    private Camera cam = default;
+
+    private Vector3 spawn_point = default;
+    private float spawn_time = default;
+    private float spawn_x = default;
+    private float spawn_y = default;
+    private float screen_h = default;
+    private float screen_w = default;
+    private bool cant_spawn = default;
     private float timer = default;
 
 

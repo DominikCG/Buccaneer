@@ -9,6 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Arena.unity
-    guid: 420f80b0861c1234b9ac78ac931ebebf
+    path: Assets/Scenes/Arena_01.unity
+    guid: 753b11e587842ea4b8bd30ad73732aa4
+  - enabled: 1
+    path: Assets/Scenes/Arena_02.unity
+    guid: a530a36248e769a488859150761a8fbb
+  - enabled: 1
+    path: Assets/Scenes/Arena_03.unity
+    guid: 433065e6dacb7b0489b214f8d7c09580
+  - enabled: 1
+    path: Assets/Scenes/Arena_04.unity
+    guid: 54ef593f7f25bcc42a9852cc571b2d3a
+  - enabled: 1
+    path: Assets/Scenes/Arena_05.unity
+    guid: 420ffe6d620b52d428b8236812b5597c
+  - enabled: 1
+    path: Assets/Scenes/Final_menu.unity
+    guid: 0220c0890e811dc4d9592d4d0df0ca6e
   m_configObjects: {}

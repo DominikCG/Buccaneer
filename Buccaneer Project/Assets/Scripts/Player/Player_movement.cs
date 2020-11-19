@@ -28,13 +28,13 @@ public class Player_movement : MonoBehaviour
     {
         if(acceleration > 0){
 
-        Vector2 move = transform.up * acceleration *Time.fixedDeltaTime;
+        Vector2 move = transform.up * acceleration *Time.deltaTime;
         player_rg.AddForce(move);
         }
     }
     private void Rotate_Ship(Transform t, float rotationSpeed)
     {
-        t.Rotate(0, 0, rotationSpeed);
+        t.Rotate(0, 0, rotationSpeed *Time.deltaTime);
     }
 
 }

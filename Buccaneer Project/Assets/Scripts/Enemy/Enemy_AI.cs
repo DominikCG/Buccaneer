@@ -71,12 +71,12 @@ public class Enemy_AI : MonoBehaviour
 
         if (gameObject.CompareTag("Enemy_shooter") && distance > maximum_distance)
         {  
-            Vector2 move = transform.up * speed * Time.fixedDeltaTime;
+            Vector2 move = transform.up * speed * Time.deltaTime;
             enemy_rg.AddForce(move);
         }
         if(gameObject.CompareTag("Enemy_chaser"))
         {
-            Vector2 move = transform.up * speed * Time.fixedDeltaTime;
+            Vector2 move = transform.up * speed * Time.deltaTime;
             enemy_rg.AddForce(move);
         }
 

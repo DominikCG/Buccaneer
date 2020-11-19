@@ -23,13 +23,13 @@ public class Game_UI : MonoBehaviour
     {
         pause_game = false;
         Time.timeScale = 1;
-        timer = Game_Configurations.Config.Get_Game_Time();
-        
+        timer = 0;
+        // timer = Game_Configurations.Config.Get_Game_Time();
     }
 
     private void Update()
     {
-        Count_Down();
+        Count_Up();
 
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -39,10 +39,6 @@ public class Game_UI : MonoBehaviour
         }
 
 
-        if(timer <= 0 && player_is_alive)
-        {
-            Victory();
-        }
         if (!player_is_alive)
         {
             Defeated();
@@ -57,7 +53,7 @@ public class Game_UI : MonoBehaviour
         end_game_score_txt.text = "Final Score: " + score;
     }
 
-    private void Victory()
+    public void Victory()
     {
         Time.timeScale = 0;
         end_game.SetActive(true);
@@ -82,9 +78,9 @@ public class Game_UI : MonoBehaviour
         }
     }
 
-    private void Count_Down()
+    private void Count_Up()
     {
-        timer -= Time.deltaTime;
+        timer += Time.deltaTime;
         timer_txt.text = timer.ToString("F0") + " Seconds";
     }
 
@@ -102,6 +98,11 @@ public class Game_UI : MonoBehaviour
     public void Main_menu()
     {
         SceneManager.LoadScene("Main_menu");
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Player_is_alive(bool is_alive)

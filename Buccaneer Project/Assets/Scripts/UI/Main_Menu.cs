@@ -8,8 +8,14 @@ public class Main_Menu : MonoBehaviour
 
     public void New_Game()
     {
-        SceneManager.LoadScene("Arena");
+        SceneManager.LoadScene("Arena_01");
     }
+    
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main_menu");
+    }
+    
     public void Configurations()
     {
 
