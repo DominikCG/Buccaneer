@@ -54669,8 +54669,6 @@ MonoBehaviour:
   _enemies:
   - Amount: 5
     Enemy: {fileID: 6843309367103079614, guid: 15b2b8113b4d06b42ac4b49ef1165834, type: 3}
-  - Amount: 2
-    Enemy: {fileID: 8517642604837943905, guid: 08c093cd70d914744a2490e8c896255f, type: 3}
   _maxEnemiesSpawned: 2
   _spawnTime: 2
   dont_spawn_layer:
