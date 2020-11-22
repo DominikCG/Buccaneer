@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Player_shoot : MonoBehaviour
 {
     [SerializeField] private Camera cam = default;
@@ -22,12 +22,24 @@ public class Player_shoot : MonoBehaviour
     private float timer_cannon_f = default;
     private float timer_cannon_l = default;
     private float timer_cannon_r = default;
+    public Image imageCooldown_f;
+    public float cooldown_f;
+    bool isCooldown_f;
+    public Image imageCooldown_l;
+    public float cooldown_l;
+    bool isCooldown_l;
+    public Image imageCooldown_r;
+    public float cooldown_r;
+    bool isCooldown_r;
 
     private void Start()
     {
         timer_cannon_f = time_to_shoot;
         timer_cannon_l = time_to_shoot;
         timer_cannon_r = time_to_shoot;
+        cooldown_f = time_to_shoot;
+        cooldown_l = time_to_shoot;
+        cooldown_r = time_to_shoot;
         player_ball = true;
         cam = Camera.main;
     }
@@ -54,6 +66,7 @@ public class Player_shoot : MonoBehaviour
             {
                 Shoot_Front();
                 timer_cannon_f = 0f;
+                isCooldown_f = true;
             }
         }
         if (Input.GetButtonDown("Fire1") && angle_mouse < -45 && angle_mouse > -145)
@@ -62,6 +75,7 @@ public class Player_shoot : MonoBehaviour
             {
                 Shoot_Right();
                 timer_cannon_r = 0f;
+                isCooldown_r = true;
             }
         }
         if (Input.GetButtonDown("Fire1") && angle_mouse > 45 && angle_mouse < 145)
@@ -69,6 +83,34 @@ public class Player_shoot : MonoBehaviour
             if (timer_cannon_l > time_to_shoot) {
                 Shoot_Left();
                 timer_cannon_l = 0f;
+                isCooldown_l = true;
+            }
+        }
+        if(isCooldown_f)
+        {
+            imageCooldown_f.fillAmount += 1 / cooldown_f * Time.deltaTime;
+            if(imageCooldown_f.fillAmount >=1)
+            {
+                imageCooldown_f.fillAmount = 0;
+                isCooldown_f = false;
+            }
+        }
+        if (isCooldown_l)
+        {
+            imageCooldown_l.fillAmount += 1 / cooldown_l * Time.deltaTime;
+            if (imageCooldown_l.fillAmount >= 1)
+            {
+                imageCooldown_l.fillAmount = 0;
+                isCooldown_l = false;
+            }
+        }
+        if (isCooldown_r)
+        {
+            imageCooldown_r.fillAmount += 1 / cooldown_l * Time.deltaTime;
+            if (imageCooldown_r.fillAmount >= 1)
+            {
+                imageCooldown_r.fillAmount = 0;
+                isCooldown_r = false;
             }
         }
     }
