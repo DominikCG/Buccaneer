@@ -92,7 +92,7 @@ public class Game_UI : MonoBehaviour
 
     public void Restart_Game()
     {
-        SceneManager.LoadScene("Arena");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Main_menu()
