@@ -158,6 +158,10 @@ MonoBehaviour:
   playerRb: {fileID: 93793787}
   movementSpeed: 100
   axis: {x: 0, y: 0}
+  cam: {fileID: 558858053}
+  player_rb: {fileID: 93793787}
+  cannon_ball_prefab: {fileID: 0}
+  playerAnim: {fileID: 93793788}
 --- !u!212 &93793785
 SpriteRenderer:
   m_ObjectHideFlags: 0
