@@ -12,7 +12,6 @@ public class PlayerCharacter : MonoBehaviour
     private Vector2 shoot_direction = default;
     private Vector2 mouse_position = default;
     [SerializeField] private Camera cam = default;
-    [SerializeField] private Rigidbody2D player_rb = default;
     [SerializeField] private GameObject cannon_ball_prefab = default;
 
     [SerializeField] private Animator playerAnim;
@@ -93,8 +92,8 @@ public class PlayerCharacter : MonoBehaviour
 
     void AngleCalc(){
         mouse_position = cam.ScreenToWorldPoint(Input.mousePosition);
-        shoot_direction = mouse_position - player_rb.position;
-        angle = player_rb.rotation;
+        shoot_direction = mouse_position - playerRb.position;
+        angle = playerRb.rotation;
         angle_mouse = (Mathf.Atan2(shoot_direction.y, shoot_direction.x) * Mathf.Rad2Deg - 90)- angle;
     }
 }

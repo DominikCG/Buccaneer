@@ -13,6 +13,7 @@ TagManager:
   - UI
   - Water
   - Dont_spawn
+  - Enemy
   layers:
   - Default
   - TransparentFX
