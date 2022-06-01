@@ -7,6 +7,7 @@ public class EnemyMob : MonoBehaviour
     [SerializeField] private Rigidbody2D rb = default;
     [SerializeField] private float movementSpeed = default;
     [SerializeField] private Vector2 axis = default;
+    [SerializeField] private Collider2D range;
     private float angle_mouse = default;
     private float angle = default;
     private bool slashReady = true;
@@ -14,12 +15,16 @@ public class EnemyMob : MonoBehaviour
     [SerializeField] private float distance = default;
     private Vector2 shoot_direction = default;
     [SerializeField] private Vector2 playerPos = default;
+    [SerializeField] private Vector2 lastPos = default;
+    private bool chase = false;
+    private bool backToPos = false;
     private Vector2 direction = default;
     private GameObject target = default;
     [SerializeField] private Camera cam = default;
     [SerializeField] private GameObject cannon_ball_prefab = default;
 
     [SerializeField] private Animator anim;
+    private Collider2D playerCollider;
 
     void Start(){
         target = GameObject.FindGameObjectWithTag("Player");
@@ -38,13 +43,31 @@ public class EnemyMob : MonoBehaviour
             Slash();
             StartCoroutine(SlashCoroutine());
         }
+        if(distance > 5){
+            chase=false;
+            StartCoroutine(BackToPosCoroutine());
+        }
 
+        if(range.IsTouching(target.GetComponent<Collider2D>())){
+            chase=true;
+            backToPos = false;
+        }
     }   
 
     void FixedUpdate(){
 
-        Move(movementSpeed,direction);
+        if(chase){
+            Move(movementSpeed,direction);
+        }else if(backToPos){
+            Move(0.5f,lastPos-(Vector2)transform.position);
+        }
 
+    }
+    private void OnCollisionEnter2D(){
+        if(range.gameObject.tag == "Player"){
+            lastPos = transform.position;
+            chase = true;
+        }
     }
     private void Move(float ACC, Vector2 DIR)
     {
@@ -113,5 +136,14 @@ public class EnemyMob : MonoBehaviour
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(delaySlash);
         slashReady = true;
+    }
+
+    IEnumerator BackToPosCoroutine()
+    {
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(2);
+        if(!chase){
+            backToPos = true;
+        }
     }
 }
