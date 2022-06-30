@@ -14,6 +14,7 @@ TagManager:
   - Water
   - Dont_spawn
   - Enemy
+  - Sword
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Combat
+  - Finder
   - Projectile
   - Ground
   - Dont_spawn

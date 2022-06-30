@@ -10,6 +10,10 @@ public class Main_Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Arena_01");
     }
+    public void Alpha_Test()
+    {
+        SceneManager.LoadScene("TestScene");
+    }
     
     public void MainMenu()
     {

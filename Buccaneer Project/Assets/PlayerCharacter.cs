@@ -16,8 +16,15 @@ public class PlayerCharacter : MonoBehaviour
 
     [SerializeField] private Animator playerAnim;
 
-
+    [SerializeField] private int dmg = 10;
+    [SerializeField]private Health_bar hp;
+    private int myHealth;
     // Update is called once per frame
+
+    void Start(){
+         hp.SetMaxHealth(100);   
+         myHealth = 100;
+    }
     void Update()
     {
         axis.y = Input.GetAxis("Vertical");
@@ -41,6 +48,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         playerRb.MovePosition(playerRb.position + DIR * ACC * Time.deltaTime);
     }
+
 
     private void Shoot(){
         AngleCalc();
@@ -75,18 +83,18 @@ public class PlayerCharacter : MonoBehaviour
 
         if (angle_mouse < 45 && angle_mouse > -45){
             playerAnim.SetTrigger("up");
-            Debug.Log("frente");
+            //Debug.Log("frente");
 
         } else if (angle_mouse < -45 && angle_mouse > -145){
             playerAnim.SetTrigger("right");
-            Debug.Log("direita");
+            //Debug.Log("direita");
 
         } else if (angle_mouse > 45 && angle_mouse < 145){
             playerAnim.SetTrigger("left");
-            Debug.Log("esquerda");
+            //Debug.Log("esquerda");
         }else{
             playerAnim.SetTrigger("down");
-            Debug.Log("costa");
+            //Debug.Log("costa");
         }
     }
 
@@ -95,5 +103,15 @@ public class PlayerCharacter : MonoBehaviour
         shoot_direction = mouse_position - playerRb.position;
         angle = playerRb.rotation;
         angle_mouse = (Mathf.Atan2(shoot_direction.y, shoot_direction.x) * Mathf.Rad2Deg - 90)- angle;
+    }
+    public void Take_Damage(int DAMAGE){
+        hp.SetHealth(DAMAGE);
+        myHealth -=DAMAGE;
+        if(myHealth <= 0){
+            Dead();
+        }
+    }
+    private void Dead(){
+        gameObject.SetActive(false);
     }
 }
