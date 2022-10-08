@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player_movement : MonoBehaviour
 {
+    [SerializeField] private float velBonus=1;
     [SerializeField] private Rigidbody2D player_rg = default;
     [SerializeField] private float movement_speed = default;
     [SerializeField] private float rotation_speed = default;
@@ -35,6 +36,10 @@ public class Player_movement : MonoBehaviour
     private void Rotate_Ship(Transform t, float rotationSpeed)
     {
         t.Rotate(0, 0, rotationSpeed *Time.deltaTime);
+    }
+
+    public void velBonusUp(){
+        velBonus += 0.1f;
     }
 
 }

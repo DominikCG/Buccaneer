@@ -114,4 +114,11 @@ public class PlayerCharacter : MonoBehaviour
     private void Dead(){
         gameObject.SetActive(false);
     }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.SendMessage("ApplyDamage", 10);
+        }
+    }
 }

@@ -15,6 +15,10 @@ TagManager:
   - Dont_spawn
   - Enemy
   - Sword
+  - velBuff
+  - aspdBuff
+  - hpBuff
+  - cannonBuff
   layers:
   - Default
   - TransparentFX

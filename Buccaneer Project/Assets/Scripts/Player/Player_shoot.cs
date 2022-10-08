@@ -151,7 +151,7 @@ public class Player_shoot : MonoBehaviour
     private void Shoot_Front(){
         GameObject ball = Instantiate(cannon_ball_prefab, player_front_cannon.position, player_front_cannon.rotation);
         ball.GetComponent<Cannon_ball>().Shoot_From_Player(player_ball);
-        ball.GetComponent<Cannon_ball>().Set_Ball_Damage(damage * 5);
+        ball.GetComponent<Cannon_ball>().Set_Ball_Damage(damage);
         Rigidbody2D ball_rg = ball.GetComponent<Rigidbody2D>();
         ball_rg.AddForce(player_front_cannon.up * ball_speed, ForceMode2D.Impulse);
     }
