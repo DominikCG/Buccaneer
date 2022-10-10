@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Bullet
+  - Enemy_shooter
+  - Enemy_chaser
+  - Camera_player
+  - Spawn_slider_time
+  - Game_slider_time
+  - UI
+  - Water
+  - Dont_spawn
+  - Enemy
+  - Sword
+  - velBuff
+  - aspdBuff
+  - hpBuff
+  - cannonBuff
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Combat
+  - Finder
+  - Projectile
+  - Ground
+  - Dont_spawn
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
