@@ -53,6 +53,13 @@ public class Enemy_AI : MonoBehaviour
         }
     }
 
+    private void Timer_Control()
+    {
+        timer_cannon_f += Time.deltaTime;
+        timer_cannon_l += Time.deltaTime;
+        timer_cannon_r += Time.deltaTime;
+    }
+
     private void AI_Controler()
     {
         distance = Vector3.Distance(player.transform.position, transform.position);
@@ -119,21 +126,12 @@ public class Enemy_AI : MonoBehaviour
             // Do nothing
         }
 
-}
-
-    private void Timer_Control()
-    {
-        timer_cannon_f += Time.deltaTime;
-        timer_cannon_l += Time.deltaTime;
-        timer_cannon_r += Time.deltaTime;
     }
-
 
     private void Shoot_Left()
     {
         for (int i = 0; i < enemy_left_cannons.Length; i++)
         {
-
             GameObject ball = Instantiate(cannon_ball_prefab, enemy_left_cannons[i].position, enemy_left_cannons[i].rotation);
             ball.GetComponent<Cannon_ball>().Shoot_From_Enemy(enemy_ball);
             ball.GetComponent<Cannon_ball>().Set_Ball_Damage(damage);
@@ -146,7 +144,6 @@ public class Enemy_AI : MonoBehaviour
     {
         for (int i = 0; i < enemy_right_cannons.Length; i++)
         {
-
             GameObject ball = Instantiate(cannon_ball_prefab, enemy_right_cannons[i].position, enemy_right_cannons[i].rotation);
             ball.GetComponent<Cannon_ball>().Shoot_From_Enemy(enemy_ball);
             ball.GetComponent<Cannon_ball>().Set_Ball_Damage(damage);
