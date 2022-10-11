@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy_AI : MonoBehaviour
 {
@@ -11,35 +12,42 @@ public class Enemy_AI : MonoBehaviour
     [SerializeField] private Transform[] enemy_right_cannons = default;
     [SerializeField] private Transform[] enemy_left_cannons = default;
     [SerializeField] private Transform enemy_front_cannon = default;
-    [SerializeField] private Vector2 player_position = default;
-    [SerializeField] private Vector2 direction = default;
+    [SerializeField] private Vector2 player_position = default; // To Delete
+    [SerializeField] private Vector2 direction = default; // To Delete
     [SerializeField] private float distance = default;
     [SerializeField] private float maximum_distance = default;
     [SerializeField] private float distance_to_shoot = default;
-    [SerializeField] private float speed = default;
-    [SerializeField] private float turn = default;   
+    [SerializeField] private float speed = default; // To Delete
+    [SerializeField] private float turn = default; // To Delete 
     [SerializeField] private float ball_speed = default;
-    [SerializeField] private float angle = default;
+    [SerializeField] private float angle = default; // To Delete
     [SerializeField] private int damage = default;
     [SerializeField] private bool enemy_ball = default;
-    [SerializeField] private float angle_to_shoot = default;
+    [SerializeField] private float angle_to_shoot = default; // To Delete
     private float timer_cannon_f = default;
     private float timer_cannon_l = default;
     private float timer_cannon_r = default;
+    private NavMeshAgent agent;
+    private bool wait_aim;
+
 
     private void Start()
     {
         enemy_ball = true;
+        wait_aim = true;
+
         player = GameObject.FindGameObjectWithTag("Player");
+
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (player != null)
-        {
-            distance = Vector3.Distance(player.transform.position, transform.position);
-
+        {           
             Timer_Control();
             AI_Controler();
         }
@@ -47,60 +55,70 @@ public class Enemy_AI : MonoBehaviour
 
     private void AI_Controler()
     {
-        player_position = player.GetComponent<Transform>().position;
-        direction = player_position - (Vector2)transform.position;
-        direction.Normalize();
-        angle = enemy_rg.rotation;
+        distance = Vector3.Distance(player.transform.position, transform.position);
 
-        float follow = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90); // tirar isso
-
-      
-
-        angle_to_shoot = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90) - angle;
-
-        if (angle_to_shoot < -180)
-            angle_to_shoot = +360 + angle_to_shoot;
-
-        if (angle_to_shoot > 180)
-            angle_to_shoot = -360 + angle_to_shoot;
-
-        float turning = (Mathf.Lerp(transform.position.z, angle_to_shoot, Time.deltaTime*turn));
-        transform.Rotate(0, 0, turning);
-       
-
-
-        if (gameObject.CompareTag("Enemy_shooter") && distance > maximum_distance)
-        {  
-            Vector2 move = transform.up * speed * Time.deltaTime;
-            enemy_rg.AddForce(move);
-        }
-        if(gameObject.CompareTag("Enemy_chaser"))
+        // Check if should chase player
+        if (distance > maximum_distance) 
         {
-            Vector2 move = transform.up * speed * Time.deltaTime;
-            enemy_rg.AddForce(move);
+            // Path to target
+            agent.SetDestination(player.transform.position);
+
+            // Rotate enemy sprite according to path
+            Vector3 direction_to_target = (agent.steeringTarget - transform.position).normalized;
+            float angle_to_target = (Mathf.Atan2(direction_to_target.y, direction_to_target.x) * Mathf.Rad2Deg) - 90;  
+            enemy_rg.MoveRotation(Mathf.LerpAngle(enemy_rg.rotation,angle_to_target, 100 * Time.deltaTime));
+        
+            wait_aim = true;
         }
-
-
-
-        if (timer_cannon_f > 4 && angle_to_shoot < 25 && angle_to_shoot > -25 && gameObject.CompareTag("Enemy_shooter") && distance < distance_to_shoot)
+        //  Or stop, aim and shoot
+        else 
         {
-            Shoot_Front();
-            timer_cannon_f = 0f;
+            // Rotate enemy sprite according to player
+            Vector3 direction_to_target = (player.transform.position - transform.position).normalized;
+            float angle_to_target = (Mathf.Atan2(direction_to_target.y, direction_to_target.x) * Mathf.Rad2Deg);  
+            enemy_rg.MoveRotation(Mathf.LerpAngle(enemy_rg.rotation,angle_to_target, 100 * Time.deltaTime));
+
+            if (wait_aim) 
+            {
+                wait_aim = false;
+                if (timer_cannon_l > 4)
+                    timer_cannon_l = 3.5f;
+                if(timer_cannon_r > 4)
+                    timer_cannon_r = 3.5f;
+            }
         }
 
-        if (timer_cannon_r > 4 && angle_to_shoot < -80 && angle_to_shoot > -120 && gameObject.CompareTag("Enemy_shooter") && distance < distance_to_shoot)
-        {
-            Shoot_Right();
-            timer_cannon_r = 0f;
-        }
-
-        if (timer_cannon_l > 4 && angle_to_shoot < 120 && angle_to_shoot > 80 && gameObject.CompareTag("Enemy_shooter") && distance < distance_to_shoot)
+        // Check enemy position relative to player to choose which cannon to shoot   
+        var relativePoint = transform.InverseTransformPoint(player.transform.position);
+        if ((relativePoint.x < 0f && Mathf.Abs(relativePoint.x) > Mathf.Abs(relativePoint.y)) // Left
+            && timer_cannon_l > 4 
+            && gameObject.CompareTag("Enemy_shooter") 
+            && distance < distance_to_shoot)
         {
             Shoot_Left();
             timer_cannon_l = 0f;
         }
+        if ((relativePoint.x > 0f && Mathf.Abs(relativePoint.x) > Mathf.Abs(relativePoint.y)) // Right
+            && timer_cannon_r > 4 
+            && gameObject.CompareTag("Enemy_shooter") 
+            && distance < distance_to_shoot)
+        {
+            Shoot_Right();
+            timer_cannon_r = 0f;
+        }
+        if ((relativePoint.y > 0 && Mathf.Abs(relativePoint.x) < Mathf.Abs(relativePoint.y)) // Front
+            && timer_cannon_f > 4
+            && gameObject.CompareTag("Enemy_shooter") 
+            && distance < distance_to_shoot) 
+        {
+            Shoot_Front();
+            timer_cannon_f = 0f;
+        }
+        if ((relativePoint.y < 0 && Mathf.Abs(relativePoint.x) < Mathf.Abs(relativePoint.y))) // Behind
+        {
+            // Do nothing
+        }
 
-    
 }
 
     private void Timer_Control()
@@ -145,6 +163,5 @@ public class Enemy_AI : MonoBehaviour
         Rigidbody2D ball_rg = ball.GetComponent<Rigidbody2D>();
         ball_rg.AddForce(enemy_front_cannon.up * ball_speed, ForceMode2D.Impulse);
     }
-
 
 }
