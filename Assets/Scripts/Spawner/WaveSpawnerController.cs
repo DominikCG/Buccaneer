@@ -15,7 +15,7 @@ public class WaveSpawnerController : MonoBehaviour
 {
     
     [SerializeField] private List<WaveItem> _enemies = default;
-    [SerializeField] private int _maxEnemiesSpawned = 5;
+    [SerializeField] private int _maxEnemiesSpawned = 10;
     [SerializeField] private float _spawnTime = 2f;
 
     [SerializeField] private LayerMask dont_spawn_layer = default;

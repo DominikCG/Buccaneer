@@ -22,26 +22,7 @@ public class GameManager : MonoBehaviour
 
     private string txt = "";
     [SerializeField] private TMP_Text m_TextComponent;
-    // [SerializeField]
-    // private GameObject topBarPlayAgainBtn;
 
-    // private int selectedScene = 0;
-    // [SerializeField]
-
-    // private GameObject arrowNextRoom;
-    // [SerializeField]
-    // private GameObject preResutPanel;
-    // [SerializeField]
-    // private GameObject resutPanel;
-    // [SerializeField, TextArea]
-    // private string[] feebacksStr;
-    // [SerializeField]
-    // private TextMeshProUGUI feebacksTMPro;
-    // [SerializeField]
-    // private Sprite[] endImages;
-    // [SerializeField]
-    // private Image endImage;
-    // [SerializeField]
 
     // public string GameMode { get => gameMode; set => gameMode = value; }
 
@@ -139,132 +120,17 @@ public class GameManager : MonoBehaviour
     }
    
     public void SwitchScene(int SCENE) {
-        // selectedScene = SCENE;
-
-        // //Debug.Log(selectedScene);
-        // switch (selectedScene)
-        // {
-        //     case 0:
-        //         ActiveScene();
-        //         break;
-
-        //     case 1:
-        //         ActiveScene();
-        //         //optionSelect.ResetComponent();
-
-        //         //sem alterar
-        //         break;
-
-        //     case 2:
-        //         ActiveScene();
-        //         break;
-
-        //     case 3:
-        //         ActiveScene();
-        //         break;
-
-        //     case 4:
-        //         ActiveScene();
-        //         break;
-
-        //     case 5:
-        //         ActiveScene();
-        //         break;
-
-        //     case 6:
-        //         ActiveScene();
-        //         break;
-
-        //     case 7:
-        //         ActiveScene();
-        //         break;
-
-        //     case 8:
-        //         ActiveScene();
-        //         break;
-        //     case 9:
-        //         ActiveScene();
-        //         break;
-
-        //     case 10:
-        //         ActiveScene();
-        //         break;
-
-        //     case 11:
-        //         ActiveScene();
-        //         break;
-
-        //     case 12:
-        //         ActiveScene();
-        //         break;
-
-        //     case 13:
-        //         ActiveScene();
-        //         break;
-
-        //     case 14:
-        //         ActiveScene();
-        //         break;
-
-        //     case 15:
-        //         ActiveScene();
-        //         break;
-        //     case 16:
-        //         ActiveScene();
-        //         break;
-
-        //     case 17:
-        //         ActiveScene();
-        //         break;
-
-        //     case 18:
-        //         ActiveScene();
-        //         break;
-
-        //     case 19:
-        //         ActiveScene();
-        //         break;
-
-        //     case 20:
-        //         ActiveScene();
-        //         break;
-
-        //     case 21:
-        //         ActiveScene();
-        //         break;
-
-        //     case 22:
-        //         ActiveScene();
-        //         break;
-        // }
+        
     }
 
     public void ActiveScene()
     {
 
-        // if (selectedScene > 0)
-        // {
-        //     // rooms[selectedScene - 1].ShowOrHideTextBox(false);
-        //     // rooms[selectedScene].ShowOrHideTextBox(true);
-        // }
-        // else
-        // {
-        // }      
     }
 
     public void PlayAgain(bool ANSWERBOX = true)
     {
-        // if (ANSWERBOX) {
 
-        //     coverPanel.SetActive(true);
-        //     startPanel.SetActive(true);
-        //     arrowNextRoom.SetActive(false);
-        //     preResutPanel.SetActive(false);
-        //     resutPanel.SetActive(false);
-        //     topBarPlayAgainBtn.SetActive(false);
-        //     selectedScene = 0;
-            
-        // }
     }
 
     public void SceneChange(int ID) {
